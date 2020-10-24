@@ -12,6 +12,21 @@ import java.util.Set;
 
 @Entity
 @Table(name = "schedule")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = "ScheduleEntity.findByCustomerId",
+                        query = "SELECT se FROM ScheduleEntity se INNER JOIN se.pets p" +
+                                " WHERE p.owner.id = :customerId"
+                ),
+                @NamedQuery(
+                        name = "ScheduleEntity.findByPetId",
+                        query = "SELECT se FROM ScheduleEntity se INNER JOIN se.pets p" +
+                                " WHERE p.id = :petId"
+                )
+        }
+)
+
 public class ScheduleEntity {
 
     @Id

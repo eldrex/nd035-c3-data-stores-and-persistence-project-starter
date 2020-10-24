@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.repository;
+package com.udacity.jdnd.course3.critter.data.repository;
 
 import com.udacity.jdnd.course3.critter.data.entity.CustomerEntity;
 import com.udacity.jdnd.course3.critter.data.entity.ScheduleEntity;
@@ -12,4 +12,8 @@ import java.util.Optional;
 public interface ScheduleRepository extends CrudRepository<ScheduleEntity, Long> {
 
     List<ScheduleEntity> findByEmployeesId(long employeeId);
+
+    List<ScheduleEntity> findByCustomerId(long customerId);
+
+    List<ScheduleEntity> findByPetId(long petId);
 }

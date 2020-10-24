@@ -10,13 +10,20 @@ import java.util.Set;
 
 
 @Entity
+@NamedQuery(
+        name = "EmployeeEntity.findAvailable",
+        query = "SELECT DISTINCT ee FROM EmployeeEntity ee " +
+                " INNER JOIN ee.skills s " +
+                " INNER JOIN ee.daysAvailable da " +
+                " WHERE da IN (:daysAvailable) AND s IN (:skills) "
+)
 public class EmployeeEntity extends PersonEntity {
 
     @ManyToMany
     @JoinTable(
             name = "employee_employee_skill",
             joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName =  "id")
+            inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id")
     )
     private List<EmployeeSkillEntity> skills = new ArrayList<>();
 

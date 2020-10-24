@@ -37,6 +37,7 @@ public class PetController {
             } else {
                 petEntity.setOwner(customer.get());
                 customer.get().getPets().add(petEntity);
+                personService.saveCustomer(customer.get());
             }
         }
         return convert(petEntity);

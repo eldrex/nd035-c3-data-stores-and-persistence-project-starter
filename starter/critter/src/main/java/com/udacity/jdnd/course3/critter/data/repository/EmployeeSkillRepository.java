@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.repository;
+package com.udacity.jdnd.course3.critter.data.repository;
 
 import com.udacity.jdnd.course3.critter.data.entity.EmployeeSkillEntity;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;

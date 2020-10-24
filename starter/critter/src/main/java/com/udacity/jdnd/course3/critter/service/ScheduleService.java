@@ -3,10 +3,10 @@ package com.udacity.jdnd.course3.critter.service;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.udacity.jdnd.course3.critter.data.entity.ScheduleEntity;
-import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.repository.EmployeeSkillRepository;
-import com.udacity.jdnd.course3.critter.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.repository.ScheduleRepository;
+import com.udacity.jdnd.course3.critter.data.repository.EmployeeRepository;
+import com.udacity.jdnd.course3.critter.data.repository.EmployeeSkillRepository;
+import com.udacity.jdnd.course3.critter.data.repository.PetRepository;
+import com.udacity.jdnd.course3.critter.data.repository.ScheduleRepository;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,5 +61,13 @@ public class ScheduleService {
 
     public List<ScheduleEntity> findByEmployeeId(long employeeId) {
         return scheduleRepository.findByEmployeesId(employeeId);
+    }
+
+    public List<ScheduleEntity> findByCustomer(long customerId) {
+        return scheduleRepository.findByCustomerId(customerId);
+    }
+
+    public List<ScheduleEntity> findByPetId(long petId) {
+        return scheduleRepository.findByPetId(petId);
     }
 }

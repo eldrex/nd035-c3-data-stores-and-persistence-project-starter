@@ -1,19 +1,12 @@
 package com.udacity.jdnd.course3.critter.schedule;
 
-import com.google.common.collect.Lists;
-import com.udacity.jdnd.course3.critter.data.entity.PetEntity;
 import com.udacity.jdnd.course3.critter.data.entity.ScheduleEntity;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
-import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
-import com.udacity.jdnd.course3.critter.repository.PetRepository;
-import com.udacity.jdnd.course3.critter.repository.ScheduleRepository;
 import com.udacity.jdnd.course3.critter.service.ScheduleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -46,7 +39,7 @@ public class ScheduleController {
 
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
-        throw new UnsupportedOperationException();
+        return scheduleService.findByPetId(petId).stream().map(s -> convert(s)).collect(Collectors.toList());
     }
 
     @GetMapping("/employee/{employeeId}")
@@ -56,7 +49,8 @@ public class ScheduleController {
 
     @GetMapping("/customer/{customerId}")
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
-        throw new UnsupportedOperationException();
+        List<ScheduleEntity> schedules = scheduleService.findByCustomer(customerId);
+        return schedules.stream().map(s -> convert(s)).collect(Collectors.toList());
     }
 
     private ScheduleDTO convert(ScheduleEntity schedule) {
