@@ -5,7 +5,8 @@ import org.hibernate.annotations.Nationalized;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// I have chosen JOINED strategy because there is no requirement to select both employee and customer at once
+@Inheritance(strategy = InheritanceType.JOINED)
 public class PersonEntity {
 
     @Id

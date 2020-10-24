@@ -103,6 +103,7 @@ public class PersonService {
         employee.setDaysAvailable(daysAvailable);
     }
 
+    @Transactional
     public List<EmployeeEntity> findAvailableEmployees(LocalDate date, Set<EmployeeSkill> skills) {
 
         List<EmployeeEntity> result = employeeRepo.findAvailable(
